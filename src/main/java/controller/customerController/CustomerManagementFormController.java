@@ -2,7 +2,6 @@ package controller.customerController;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
+import service.CustomerManagementServiceImpl;
+import service.CustomerManagementService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -93,7 +94,7 @@ public class CustomerManagementFormController extends Component implements Initi
     private JFXComboBox<String> cmbTitle;
 
 
-    CustomerManagementService customerManagementService = new CustomerManagementController();
+    CustomerManagementService customerManagementService = new CustomerManagementServiceImpl();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

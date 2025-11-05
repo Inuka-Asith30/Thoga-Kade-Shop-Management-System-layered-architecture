@@ -29,24 +29,29 @@ public class DashboardFormController {
     @FXML
     void btnCustomerMangeFormOnAction(ActionEvent event) throws IOException {
         customerMangeFormStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CustomerManagement.fxml"))));
+        customerMangeFormStage.setResizable(false);
         customerMangeFormStage.show();
+
     }
 
     @FXML
     void btnItemMangeFormOnAction(ActionEvent event) throws IOException {
         itemMangeFormStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ItemManagement.fxml"))));
+        itemMangeFormStage.setResizable(false);
         itemMangeFormStage.show();
     }
 
     @FXML
     void btnOrderMangeFormOnAction(ActionEvent event) throws IOException {
         orderMangeFormStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderManagement.fxml"))));
+        orderMangeFormStage.setResizable(false);
         orderMangeFormStage.show();
     }
 
     @FXML
     void btnOrderDetailMangeFormOnAction(ActionEvent event) throws IOException {
         orderDetailManageFormStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderDetailManagement.fxml"))));
+        orderDetailManageFormStage.setResizable(false);
         orderDetailManageFormStage.show();
     }
 
