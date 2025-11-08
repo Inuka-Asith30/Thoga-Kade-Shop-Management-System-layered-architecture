@@ -1,11 +1,11 @@
 package controller.PlaceOrderController;
 
 import controller.DB.DBConnection;
-import controller.OrderController.OrderManagementController;
-import controller.OrderController.OrderManagementService;
+import service.Impl.OrderManagementServiceImpl;
+import service.OrderManagementService;
 import javafx.collections.ObservableList;
 import model.Item;
-import model.Order;
+import model.Orders;
 import model.OrderDetails;
 import model.TableOrderDetail;
 
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class PlaceOrderController implements PlaceOrderService{
 
-    OrderManagementService orderManagementService=new OrderManagementController();
+    OrderManagementService orderManagementService=new OrderManagementServiceImpl();
 
     @Override
     public Item priceInitialize(String itemCode) {
@@ -85,15 +85,15 @@ public class PlaceOrderController implements PlaceOrderService{
     }
 
     @Override
-    public boolean placeOrderDetails(Order order, ObservableList<TableOrderDetail> tableOrderDetails) {
+    public boolean placeOrderDetails(Orders orders, ObservableList<TableOrderDetail> tableOrderDetails) {
 
-        boolean isAddedOrderTable=orderManagementService.addOrder(order);
+        boolean isAddedOrderTable=orderManagementService.addOrder(orders);
         boolean isAddedOrderdetailsTable=true;
         OrderDetails setOrderTable=null;
 
         for(TableOrderDetail tableOrderDetail:tableOrderDetails){
 
-            setOrderTable=new OrderDetails(order.getOrderId(),
+            setOrderTable=new OrderDetails(orders.getOrderId(),
                     tableOrderDetail.getItemCode(),
                     tableOrderDetail.getOrderQty(),
                     tableOrderDetail.getDiscount()

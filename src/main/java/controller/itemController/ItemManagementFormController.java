@@ -12,8 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
-import service.Service.ItemManagementService;
-import service.ItemManagementServiceImpl;
+import service.ItemManagementService;
+import service.Impl.ItemManagementServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;

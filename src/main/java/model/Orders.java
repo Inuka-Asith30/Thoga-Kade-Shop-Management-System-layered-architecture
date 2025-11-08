@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.control.DatePicker;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,7 +10,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 
-public class Order {
+public class Orders {
     private String orderId;
     private LocalDate orderDate;
     private String customerId;

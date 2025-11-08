@@ -13,8 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
-import service.CustomerManagementServiceImpl;
-import service.Service.CustomerManagementService;
+import service.Impl.CustomerManagementServiceImpl;
+import service.CustomerManagementService;
 
 import javax.swing.*;
 import java.awt.*;

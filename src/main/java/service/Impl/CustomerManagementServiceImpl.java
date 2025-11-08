@@ -1,11 +1,11 @@
-package service;
+package service.Impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Customer;
 import repository.CustomerRepository;
-import repository.CustomerRepositoryImpl;
-import service.Service.CustomerManagementService;
+import repository.Impl.CustomerRepositoryImpl;
+import service.CustomerManagementService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,15 +1,12 @@
-package service;
+package service.Impl;
 
-import controller.DB.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Item;
 import repository.ItemRepository;
-import repository.ItemRepositoryImpl;
-import service.Service.ItemManagementService;
+import repository.Impl.ItemRepositoryImpl;
+import service.ItemManagementService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

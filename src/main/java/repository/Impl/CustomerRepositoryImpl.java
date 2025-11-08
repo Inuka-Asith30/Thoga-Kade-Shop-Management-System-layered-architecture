@@ -1,14 +1,15 @@
-package repository;
+package repository.Impl;
 
 import controller.DB.DBConnection;
 import model.Customer;
+import repository.CustomerRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
 
     public ResultSet getAll(){
 

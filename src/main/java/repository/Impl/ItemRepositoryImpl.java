@@ -1,14 +1,15 @@
-package repository;
+package repository.Impl;
 
 import controller.DB.DBConnection;
 import model.Item;
+import repository.ItemRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemRepositoryImpl implements ItemRepository{
+public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public boolean addItemDetails(Item item) {

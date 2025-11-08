@@ -5,7 +5,6 @@ import controller.PlaceOrderController.PlaceOrderController;
 import controller.PlaceOrderController.PlaceOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Order;
 import model.OrderDetails;
 
 import java.sql.*;

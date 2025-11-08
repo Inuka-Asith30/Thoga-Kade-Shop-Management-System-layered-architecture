@@ -14,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
-import model.Order;
+import model.Orders;
 import model.TableOrderDetail;
 
 import javax.swing.*;
@@ -124,7 +124,7 @@ public class PlaceOrderFormController extends Component implements Initializable
         Integer discount=Integer.parseInt(lblDiscount.getText());
 
 
-        boolean isAdded=placeOrderService.placeOrderDetails(new Order(orderId,orderDate,custID),tableOrderDetail);
+        boolean isAdded=placeOrderService.placeOrderDetails(new Orders(orderId,orderDate,custID),tableOrderDetail);
 
         if(isAdded){
             JOptionPane.showConfirmDialog(this,"Order was Placed");
