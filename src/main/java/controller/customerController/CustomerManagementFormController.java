@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import service.CustomerManagementServiceImpl;
-import service.CustomerManagementService;
+import service.Service.CustomerManagementService;
 
 import javax.swing.*;
 import java.awt.*;
