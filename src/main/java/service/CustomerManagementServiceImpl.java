@@ -1,24 +1,23 @@
 package service;
 
-import controller.DB.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Customer;
 import repository.CustomerRepository;
+import repository.CustomerRepositoryImpl;
+import service.Service.CustomerManagementService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerManagementServiceImpl implements CustomerManagementService {
 
-    CustomerRepository customerRepository =new CustomerRepository();
+    CustomerRepository customerRepository =new CustomerRepositoryImpl();
 
     @Override
     public boolean addCustomerDetails(Customer customer) {
 
-        int isAdded=customerRepository.addDetails(customer);
+        int isAdded= customerRepository.addDetails(customer);
 
         if(isAdded==1){
             return true;
@@ -30,7 +29,7 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
     @Override
     public boolean updateCustomerDetails(Customer customer) {
 
-        boolean isUpdated=customerRepository.updateDetails(customer);
+        boolean isUpdated= customerRepository.updateDetails(customer);
 
         return isUpdated;
     }
@@ -51,7 +50,7 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
     public ObservableList<Customer> getAllCustomerDetails() {
 
         ObservableList<Customer> customerDetailsList = FXCollections.observableArrayList();
-        ResultSet resultSet=customerRepository.getAll();
+        ResultSet resultSet= customerRepository.getAll();
         try {
             while (resultSet.next()) {
                 customerDetailsList.add(
