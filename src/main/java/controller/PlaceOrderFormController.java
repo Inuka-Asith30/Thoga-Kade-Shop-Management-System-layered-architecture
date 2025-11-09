@@ -1,8 +1,10 @@
-package controller.PlaceOrderController;
+package controller;
 
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import service.Impl.PlaceOrderServiceImpl;
+import service.PlaceOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
-import model.Order;
+import model.Orders;
 import model.TableOrderDetail;
 
 import javax.swing.*;
@@ -82,7 +84,7 @@ public class PlaceOrderFormController extends Component implements Initializable
     @FXML
     private JFXTextField txtOrderId;
 
-    PlaceOrderService placeOrderService=new PlaceOrderController();
+    PlaceOrderService placeOrderService=new PlaceOrderServiceImpl();
 
     private ObservableList<TableOrderDetail> tableOrderDetail= FXCollections.observableArrayList();
 
@@ -124,7 +126,7 @@ public class PlaceOrderFormController extends Component implements Initializable
         Integer discount=Integer.parseInt(lblDiscount.getText());
 
 
-        boolean isAdded=placeOrderService.placeOrderDetails(new Order(orderId,orderDate,custID),tableOrderDetail);
+        boolean isAdded=placeOrderService.placeOrderDetails(new Orders(orderId,orderDate,custID),tableOrderDetail);
 
         if(isAdded){
             JOptionPane.showConfirmDialog(this,"Order was Placed");
@@ -190,19 +192,9 @@ public class PlaceOrderFormController extends Component implements Initializable
     }
 
     public void getNewOrderId(){
-        String lastOrderId=placeOrderService.getOrderId();
-        String newOrderId=null;
+        String newOrderId=placeOrderService.getOrderId();
 
-        if(lastOrderId!=null){
-            lastOrderId=lastOrderId.split("[A-Z]")[1];//D060-->060
-            newOrderId=String.format("D%03d",(Integer.parseInt(lastOrderId)+1));
-            //System.out.println(newOrderId);
-
-            txtOrderId.setText(newOrderId);
-        }
-        else{
-            txtOrderId.setText("D001");
-        }
+        txtOrderId.setText(newOrderId);
     }
 
 }

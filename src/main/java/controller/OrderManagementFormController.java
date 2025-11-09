@@ -1,4 +1,4 @@
-package controller.OrderController;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -9,18 +9,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Order;
+import model.Orders;
+import service.Impl.OrderManagementServiceImpl;
+import service.OrderManagementService;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class OrderManagementFormController extends Component implements Initializable {
@@ -53,12 +53,12 @@ public class OrderManagementFormController extends Component implements Initiali
     private JFXTextField txtOrderId;
 
     @FXML
-    private TableView<Order> tblOrder;
+    private TableView<Orders> tblOrder;
 
     Stage placeOrderFormStage=new Stage();
 
-    OrderManagementService orderManagementService=new OrderManagementController();
-    ObservableList<Order> ordersList= FXCollections.observableArrayList();
+    OrderManagementService orderManagementService=new OrderManagementServiceImpl();
+    ObservableList<Orders> ordersList= FXCollections.observableArrayList();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -112,10 +112,10 @@ public class OrderManagementFormController extends Component implements Initiali
         placeOrderFormStage.show();
     }
 
-    public void setSelectedValue(Order order){
-        txtOrderId.setText(order.getOrderId());
-        txtOrderDate.setText(order.getOrderDate().toString());
-        txtCustomerId.setText(order.getCustomerId());
+    public void setSelectedValue(Orders orders){
+        txtOrderId.setText(orders.getOrderId());
+        txtOrderDate.setText(orders.getOrderDate().toString());
+        txtCustomerId.setText(orders.getCustomerId());
     }
 
 }

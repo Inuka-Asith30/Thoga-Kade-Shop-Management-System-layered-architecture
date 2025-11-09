@@ -1,4 +1,4 @@
-package controller.itemController;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -12,6 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
+import service.ItemManagementService;
+import service.Impl.ItemManagementServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,7 +66,7 @@ public class ItemManagementFormController extends Component implements Initializ
     @FXML
     private JFXTextArea txtDescription;
 
-    ItemManagementService itemManagementService=new ItemManagementController();
+    ItemManagementService itemManagementService=new ItemManagementServiceImpl();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

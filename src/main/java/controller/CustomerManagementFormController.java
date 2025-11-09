@@ -1,4 +1,4 @@
-package controller.customerController;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -13,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
-import service.CustomerManagementServiceImpl;
+import service.Impl.CustomerManagementServiceImpl;
 import service.CustomerManagementService;
 
 import javax.swing.*;

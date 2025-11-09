@@ -1,39 +1,43 @@
-package controller.OrderDetailController;
+package repository.Impl;
 
 import controller.DB.DBConnection;
-import controller.PlaceOrderController.PlaceOrderController;
-import controller.PlaceOrderController.PlaceOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Order;
 import model.OrderDetails;
+import repository.OrderDetailsRepository;
+import service.Impl.PlaceOrderServiceImpl;
+import service.PlaceOrderService;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class OrderDetailManagementController implements OrderDetailManagementService{
+public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
     @Override
-    public boolean addOrderDetail(OrderDetails orderDetails) {
-
+    public boolean addOrderDetails(OrderDetails orderDetails) {
         try {
-            Connection connection=DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO Order(OrderID, ItemCode, OrderQTY, Discount) VALUES(?,?,?,?);");
+            Connection connection= DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO orderdetail(OrderID, ItemCode, OrderQTY, Discount) VALUES(?,?,?,?)");
             preparedStatement.setObject(1,orderDetails.getOrderId());
             preparedStatement.setObject(2,orderDetails.getItemCode());
             preparedStatement.setObject(3,orderDetails.getOrderQty());
             preparedStatement.setObject(4,orderDetails.getDiscount());
 
-            boolean isAdded=preparedStatement.execute();
+            int isAdded=preparedStatement.executeUpdate();
 
-            return isAdded;
+            if(isAdded==1){
+                return true;
+            }
+            return false;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
-    public boolean updateOrderDetail(OrderDetails orderDetails) {
+    public boolean updateOrderDetails(OrderDetails orderDetails) {
 
         String SQL="UPDATE orderdetail SET OrderQTY=?,Discount=? WHERE ItemCode=? and OrderID=?";
 
@@ -48,7 +52,7 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
             preparedStatement.setObject(4,orderDetails.getOrderId());
 
             int isUpdated=preparedStatement.executeUpdate();
-            PlaceOrderService placeOrderService=new PlaceOrderController();
+            PlaceOrderService placeOrderService=new PlaceOrderServiceImpl();
             boolean isUpdatedItemTable=placeOrderService.updateItemTable(orderDetails);
 
             if(isUpdated==1 && isUpdatedItemTable){
@@ -60,12 +64,10 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
             throw new RuntimeException(e);
         }
 
-
-
     }
 
     @Override
-    public int deleteOrderDetail(String itemCode,String orderId) {
+    public int deleteOrderDetails(String itemCode, String orderId) {
         try {
             Connection connection=DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement=connection.prepareStatement("delete from orderdetail where ItemCode=? and OrderId=?");
@@ -79,32 +81,19 @@ public class OrderDetailManagementController implements OrderDetailManagementSer
     }
 
     @Override
-    public ObservableList<OrderDetails> getAllOrderDetail() {
+    public ResultSet getAllOrderDetails() {
 
-        ObservableList<OrderDetails> orderDetailList= FXCollections.observableArrayList();
+
 
         try {
             Connection  connection=DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement=connection.prepareStatement("select * from orderdetail");
             ResultSet resultSet=preparedStatement.executeQuery();
 
-            while(resultSet.next()){
-                orderDetailList.add(
-                        new OrderDetails(
-                                resultSet.getString("OrderID"),
-                                resultSet.getString("ItemCode"),
-                                resultSet.getInt("OrderQTY"),
-                                resultSet.getInt("Discount")
-                        )
-                );
-            }
-
-            return orderDetailList;
+            return resultSet;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }
