@@ -100,5 +100,21 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return false;
     }
 
+    @Override
+    public ResultSet searchCustomer(String customerId) {
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("select CustName from customer where CustID=?");
+            preparedStatement.setObject(1,customerId);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            return resultSet;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 }

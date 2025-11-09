@@ -8,4 +8,5 @@ public interface OrderManagementService {
     boolean updateOrder(Orders orders);
     boolean deleteOrder(String orderId);
     ObservableList<Orders> getAllOrders();
+    String getLastId();
 }

@@ -1,4 +1,4 @@
-package controller.OrderDetailController;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderDetails;
+import service.Impl.OrderDetailManagementServiceImpl;
+import service.OrderDetailManagementService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,7 +60,7 @@ public class OrderDetailManagementFormController extends Component implements In
     @FXML
     private JFXTextField txtOrderQty;
 
-    OrderDetailManagementService orderDetailManagementService=new OrderDetailManagementController();
+    OrderDetailManagementService orderDetailManagementService=new OrderDetailManagementServiceImpl();
 
 
     @FXML

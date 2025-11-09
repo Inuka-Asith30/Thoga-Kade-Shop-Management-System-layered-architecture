@@ -1,8 +1,10 @@
-package controller.PlaceOrderController;
+package controller;
 
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import service.Impl.PlaceOrderServiceImpl;
+import service.PlaceOrderService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -82,7 +84,7 @@ public class PlaceOrderFormController extends Component implements Initializable
     @FXML
     private JFXTextField txtOrderId;
 
-    PlaceOrderService placeOrderService=new PlaceOrderController();
+    PlaceOrderService placeOrderService=new PlaceOrderServiceImpl();
 
     private ObservableList<TableOrderDetail> tableOrderDetail= FXCollections.observableArrayList();
 
@@ -190,19 +192,9 @@ public class PlaceOrderFormController extends Component implements Initializable
     }
 
     public void getNewOrderId(){
-        String lastOrderId=placeOrderService.getOrderId();
-        String newOrderId=null;
+        String newOrderId=placeOrderService.getOrderId();
 
-        if(lastOrderId!=null){
-            lastOrderId=lastOrderId.split("[A-Z]")[1];//D060-->060
-            newOrderId=String.format("D%03d",(Integer.parseInt(lastOrderId)+1));
-            //System.out.println(newOrderId);
-
-            txtOrderId.setText(newOrderId);
-        }
-        else{
-            txtOrderId.setText("D001");
-        }
+        txtOrderId.setText(newOrderId);
     }
 
 }

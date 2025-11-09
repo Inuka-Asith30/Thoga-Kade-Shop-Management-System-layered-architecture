@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1348.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerController.CustomerManagementFormController">
+<AnchorPane prefHeight="620.0" prefWidth="1348.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerManagementFormController">
    <children>
       <TableView fx:id="tblCustomerDetails" layoutX="398.0" layoutY="107.0" prefHeight="399.0" prefWidth="898.0">
         <columns>

@@ -56,4 +56,24 @@ public class OrderManagementServiceImpl implements OrderManagementService {
 
 
     }
+
+    @Override
+    public String getLastId() {
+
+        ResultSet resultSet=orderRepository.getOrderId();
+
+        try {
+
+            String orderId=null;
+
+            while(resultSet.next()){
+                orderId=resultSet.getString("OrderID");
+            }
+
+            return orderId;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -71,4 +71,19 @@ public class OrderRepositoryImpl implements OrderRepository {
         }
 
     }
+
+    @Override
+    public ResultSet getOrderId() {
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT OrderID FROM orders ORDER BY OrderID DESC LIMIT 1");
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            return resultSet;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
